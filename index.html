@@ -3,9 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melang</title>
+    <title>I Love You</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(-20px); opacity: 1; }
+            100% { transform: translateY(0); opacity: 0.5; }
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 2rem;
+            animation: float 2s infinite ease-in-out;
+        }
+        .glow {
+            text-shadow: 0 0 10px #ff1493, 0 0 20px #ff69b4, 0 0 30px #ff1493;
+        }
+    </style>
 </head>
-<body>
-   <h1>I love you <3</h1>
+<body class="flex items-center justify-center min-h-screen bg-gradient-to-r from-pink-500 to-red-500">
+    <div class="text-center text-white">
+        <h1 class="text-6xl font-bold glow">I Love You ❤️</h1>
+        <p class="text-lg mt-4 opacity-80">Forever and Always</p>
+    </div>
+    
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            document.body.appendChild(heart);
+            
+            const size = Math.random() * 20 + 10;
+            heart.style.fontSize = `${size}px`;
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.top = `${Math.random() * 100}vh`;
+            heart.style.animationDuration = `${Math.random() * 2 + 1}s`;
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 2000);
+        }
+        setInterval(createHeart, 300);
+    </script>
 </body>
 </html>
